@@ -1,157 +1,332 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namitha P M | Portfolio</title>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namitha P M | Portfolio</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Trebuchet MS", Arial, sans-serif;
+        min-height: 100vh;
+        color: white;
+        overflow-x: hidden;
+
+        /* Sky blue background */
+        background: linear-gradient(
+            135deg,
+            #87CEEB,
+            #4bb8df,
+            #2196c9,
+            #0b5275
+        );
+
+        background-size: 400% 400%;
+        animation: backgroundMove 12s ease infinite;
+    }
+
+    /* Moving background */
+    @keyframes backgroundMove {
+        0% {
+            background-position: 0% 50%;
         }
 
-        body {
-            background: #f4f6f8;
-            color: #222;
+        50% {
+            background-position: 100% 50%;
         }
 
-        header {
-            background: #1e3a8a;
-            color: white;
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Sparkles */
+    .sparkle {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        box-shadow:
+            0 0 8px white,
+            0 0 15px #dff9ff,
+            0 0 25px #ffffff;
+        animation: sparkle 3s infinite ease-in-out;
+        z-index: 0;
+    }
+
+    .sparkle:nth-child(1) {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .sparkle:nth-child(2) {
+        top: 30%;
+        left: 80%;
+        animation-delay: 1s;
+    }
+
+    .sparkle:nth-child(3) {
+        top: 70%;
+        left: 20%;
+        animation-delay: 2s;
+    }
+
+    .sparkle:nth-child(4) {
+        top: 80%;
+        left: 75%;
+        animation-delay: 0.5s;
+    }
+
+    .sparkle:nth-child(5) {
+        top: 45%;
+        left: 50%;
+        animation-delay: 1.5s;
+    }
+
+    .sparkle:nth-child(6) {
+        top: 10%;
+        left: 60%;
+        animation-delay: 2.5s;
+    }
+
+    .sparkle:nth-child(7) {
+        top: 60%;
+        left: 90%;
+        animation-delay: 1.2s;
+    }
+
+    @keyframes sparkle {
+        0%, 100% {
+            opacity: 0.2;
+            transform: scale(0.5);
         }
 
-        header h1 {
-            font-size: 24px;
+        50% {
+            opacity: 1;
+            transform: scale(2);
+        }
+    }
+
+    /* Main content */
+    .container {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: auto;
+        padding: 70px 20px;
+    }
+
+    .profile {
+        text-align: center;
+        padding: 50px 30px;
+        background: rgba(0, 20, 40, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 25px;
+
+        box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 50px rgba(0, 40, 80, 0.5);
+
+        backdrop-filter: blur(8px);
+    }
+
+    h1 {
+        font-size: 55px;
+        color: #ffffff;
+
+        text-shadow:
+            0 0 5px #fff,
+            0 0 15px #9eeeff,
+            0 0 30px #00d9ff;
+
+        margin-bottom: 15px;
+    }
+
+    .subtitle {
+        font-size: 21px;
+        color: #dff9ff;
+        letter-spacing: 2px;
+    }
+
+    .section {
+        margin-top: 30px;
+        padding: 30px;
+        background: rgba(0, 25, 45, 0.5);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.3),
+            inset 0 0 20px rgba(135, 206, 235, 0.1);
+
+        backdrop-filter: blur(6px);
+    }
+
+    .section h2 {
+        color: #a9f0ff;
+        margin-bottom: 15px;
+        font-size: 28px;
+
+        text-shadow:
+            0 0 10px #00d9ff;
+    }
+
+    .section p {
+        line-height: 1.8;
+        font-size: 17px;
+        color: #f0fcff;
+    }
+
+    /* Skills */
+    .skills {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .skill {
+        padding: 12px 25px;
+        border-radius: 25px;
+        background: rgba(135, 206, 235, 0.2);
+        border: 1px solid #a9f0ff;
+        color: white;
+
+        box-shadow:
+            0 0 10px rgba(0, 217, 255, 0.6);
+
+        transition: 0.3s;
+    }
+
+    .skill:hover {
+        transform: translateY(-5px) scale(1.05);
+        background: rgba(0, 217, 255, 0.3);
+
+        box-shadow:
+            0 0 15px #00d9ff,
+            0 0 30px #00d9ff;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 35px;
+        padding: 20px;
+        color: #dff9ff;
+        font-size: 14px;
+    }
+
+    /* Nightmare glow */
+    .nightmare {
+        margin-top: 20px;
+        color: #bff6ff;
+        font-style: italic;
+
+        text-shadow:
+            0 0 5px #fff,
+            0 0 15px #00d9ff;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 38px;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+        .subtitle {
+            font-size: 16px;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .container {
+            padding: 40px 15px;
         }
+    }
+</style>
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: white;
-        }
+</head> <body>
+<!-- Sparkles -->
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
 
-        .hero h2 {
-            font-size: 42px;
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
+<div class="container">
 
-        .hero p {
-            font-size: 20px;
-            color: #555;
-        }
-
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        section h2 {
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill {
-            background: #1e3a8a;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #1e3a8a;
-            color: white;
-            margin-top: 40px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <header>
+    <!-- Introduction -->
+    <div class="profile">
         <h1>Namitha P M</h1>
 
-        <nav>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <p class="subtitle">
+            CSE Student • Curious Learner • Future Developer
+        </p>
 
-    <div class="hero">
-        <h2>Hello, I'm Namitha P M</h2>
-        <p>Computer Science and Engineering Student</p>
+        <p class="nightmare">
+            ✦ Welcome to my little world of code & dreams ✦
+        </p>
     </div>
 
-    <section id="about">
-        <h2>About Me</h2>
+    <!-- About -->
+    <div class="section">
+        <h2>🌙 About Me</h2>
+
         <p>
-            Hello! I am Namitha P M, currently pursuing my
-            Computer Science and Engineering degree at JITD.
-            I am interested in technology, programming, and
-            learning new skills.
+            Myself <strong>Namitha P M</strong>, currently pursuing
+            my studies at <strong>JITD</strong>.
         </p>
-    </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <h3>Computer Science and Engineering</h3>
-        <p>JITD</p>
-        <p>Currently Studying</p>
-    </section>
+        <br>
 
-    <section id="skills">
-        <h2>Skills</h2>
+        <p>
+            I'm a curious learner who enjoys turning new ideas
+            into practical skills. My journey is still under
+            construction, but every line of code is adding a
+            new chapter.
+        </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2>⚡ My Skills</h2>
+
+        <p>
+            I have a basic understanding of:
+        </p>
 
         <div class="skills">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">C</span>
-            <span class="skill">Python</span>
+            <div class="skill">🐍 Python</div>
+            <div class="skill">💻 C</div>
+            <div class="skill">🔧 Git</div>
         </div>
-    </section>
+    </div>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p><strong>Name:</strong> Namitha P M</p>
-        <p><strong>Course:</strong> Computer Science and Engineering</p>
-        <p><strong>College:</strong> JITD</p>
-    </section>
+    <!-- Journey -->
+    <div class="section">
+        <h2>✨ My Journey</h2>
+
+        <p>
+            Every project teaches me something new.
+            Every error gives me another lesson.
+            Every line of code brings me one step closer
+            to becoming a better developer.
+        </p>
+
+        <p class="nightmare">
+            "The journey may feel like a beautiful nightmare,
+            but I'm still writing the story." 🌌
+        </p>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Namitha P M. All Rights Reserved.</p>
+        <p>© 2026 Namitha P M | Made with 💙 & Code</p>
     </footer>
 
-</body>
-</html>
+</div>
+
+</body> </html>
